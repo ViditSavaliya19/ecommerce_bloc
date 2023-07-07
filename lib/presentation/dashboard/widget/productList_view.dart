@@ -1,5 +1,8 @@
 import 'package:ecommerce_bloc/data/model/product_model.dart';
+import 'package:ecommerce_bloc/presentation/dashboard/bloc/product_bloc.dart';
+import 'package:ecommerce_bloc/presentation/dashboard/bloc/product_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 class ProductListView extends StatelessWidget {
@@ -12,7 +15,7 @@ class ProductListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: ListView.builder(
-
+        itemCount: pList.length,
         itemBuilder: (context, index) {
           return Container(
             margin: EdgeInsets.all(5),
@@ -32,53 +35,66 @@ class ProductListView extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Column(crossAxisAlignment: CrossAxisAlignment.start,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
                       width: 45.w,
                       child: Text(
                         "${pList[index].title}",
-                        style: const TextStyle(
-                            fontSize: 20,),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: 15.sp,
+                        ),
                       ),
                     ),
                     const SizedBox(
                       height: 10,
-                    ), Row(
+                    ),
+                    Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                            "\$",
-                            style:  TextStyle(
-                                color: Colors.orange.shade900,fontSize: 15),
-                          ),
+                          "\$",
+                          style: TextStyle(
+                              color: Colors.orange.shade900, fontSize: 15),
+                        ),
                         Text(
-                            "${pList[index].price}",
-                            style:  TextStyle(
-                                color: Colors.orange.shade900,fontSize: 20,fontWeight: FontWeight.bold),
-                          ),
+                          "${pList[index].price}",
+                          style: TextStyle(
+                              color: Colors.orange.shade900,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ],
                     ),
                     const SizedBox(
                       height: 10,
                     ),
-
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
-                      decoration:  BoxDecoration(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 5),
+                      decoration: BoxDecoration(
                         border: Border.all(color: Colors.greenAccent.shade700),
                         color: Colors.green.shade50,
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Text(
                         pList[index].category.toString().substring(9),
-                        style:  TextStyle(
-                            color: Colors.green.shade900,fontSize: 10),
+                        style: TextStyle(
+                            color: Colors.green.shade900, fontSize: 10),
                       ),
                     ),
                   ],
                 ),
-
+                Spacer(),
+                IconButton(
+                  onPressed: () {
+                    context.read<ProductBloc>().add(AddCartProductEvent(pList[index]));
+                  },
+                  icon: Icon(Icons.add_shopping_cart),
+                )
               ],
             ),
           );

@@ -5,6 +5,7 @@ class ProductRepository {
   static final repo = ProductRepository._();
 
   List<ProductModel>? productList = [];
+  List<ProductModel> cartList = [];
 
   ProductRepository._();
 
@@ -12,4 +13,10 @@ class ProductRepository {
     productList = await ApiHelper.helper.getProductDataApi();
     return productList;
   }
+
+  void addCartProduct(ProductModel productModel)
+  {
+      cartList.add(productModel);
+  }
+
 }

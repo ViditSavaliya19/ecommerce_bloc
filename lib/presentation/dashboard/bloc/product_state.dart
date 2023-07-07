@@ -16,3 +16,7 @@ class ProductErrorState extends ProductState {
 
   ProductErrorState(this.error);
 }
+class AddCartState extends ProductState {
+  List<ProductModel> cartList = [];
+  AddCartState(this.cartList);
+}

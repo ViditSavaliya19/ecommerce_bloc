@@ -18,6 +18,11 @@ class ProductBloc extends Bloc<ProductEvent,ProductState>
    });
 
 
+   on<AddCartProductEvent>((event, emit) {
+      ProductRepository.repo.addCartProduct(event.productModel);
+     emit.call(AddCartState(ProductRepository.repo.cartList));
+   });
+
   }
 
 }
