@@ -15,8 +15,21 @@ class ProductLoadErrorEvent extends ProductEvent {
 
   ProductLoadErrorEvent(this.error);
 }
-class AddCartProductEvent extends ProductEvent{
-  ProductModel productModel=ProductModel();
-
-  AddCartProductEvent(this.productModel);
-}
+// class AddCartProductEvent extends ProductEvent{
+//   ProductModel productModel=ProductModel();
+//
+//   AddCartProductEvent(this.productModel);
+// }
+//
+// class IncrementQaEvent extends ProductEvent
+// {
+//   ProductModel productModel=ProductModel();
+//   int index;
+//   IncrementQaEvent(this.productModel,this.index);
+// }
+// class DecrementQaEvent extends ProductEvent
+// {
+//   ProductModel productModel=ProductModel();
+//   int index;
+//   DecrementQaEvent(this.productModel,this.index);
+// }

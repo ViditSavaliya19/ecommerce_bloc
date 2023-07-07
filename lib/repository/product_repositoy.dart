@@ -6,6 +6,7 @@ class ProductRepository {
 
   List<ProductModel>? productList = [];
   List<ProductModel> cartList = [];
+  double totalAmount=0;
 
   ProductRepository._();
 
@@ -14,9 +15,28 @@ class ProductRepository {
     return productList;
   }
 
-  void addCartProduct(ProductModel productModel)
-  {
-      cartList.add(productModel);
+  void addCartProduct(ProductModel productModel) {
+    cartList.add(productModel);
+    totalAmountCart();
   }
 
+  void addQaUpdate(int index, ProductModel productModel) {
+    if (productModel.qa! > 0) {
+      cartList[index] = productModel;
+    } else {
+      cartList.removeAt(index);
+    }
+    totalAmountCart();
+
+  }
+
+  void totalAmountCart()
+  {
+    totalAmount=0;
+    for(int i=0;i<cartList.length;i++)
+      {
+        totalAmount=totalAmount+cartList[i].price!;
+      }
+
+  }
 }

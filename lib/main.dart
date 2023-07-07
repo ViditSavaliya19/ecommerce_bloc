@@ -1,7 +1,8 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:ecommerce_bloc/presentation/cart/bloc/cart_bloc.dart';
 import 'package:ecommerce_bloc/presentation/dashboard/bloc/product_bloc.dart';
 import 'package:ecommerce_bloc/presentation/dashboard/bloc/product_event.dart';
-import 'package:ecommerce_bloc/presentation/dashboard/cart_screen.dart';
+import 'package:ecommerce_bloc/presentation/cart/cart_screen.dart';
 import 'package:ecommerce_bloc/presentation/dashboard/dash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ void main() {
           providers: [
             BlocProvider(
               create: (context) => ProductBloc()..add(ProductLoadStartEvent()),
+            ),
+            BlocProvider(
+              create: (context) => CartBloc(),
             ),
           ],
           child: MaterialApp(

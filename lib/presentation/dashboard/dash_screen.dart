@@ -44,9 +44,6 @@ class _DashScreenState extends State<DashScreen> {
               l1= state.productList;
               return ProductListView(l1);
             }
-            else if (state is AddCartState) {
-              return ProductListView(l1);
-            }
             else if (state is ProductErrorState) {
               return Center(
                 child: SelectableText("Error => ${state.error}"),
