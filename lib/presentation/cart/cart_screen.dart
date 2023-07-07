@@ -90,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          width: 45.w,
+                          width: 30.w,
                           child: Text("${l1[index].title}",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,

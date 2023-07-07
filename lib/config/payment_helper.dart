@@ -13,7 +13,8 @@ class PaymentHelper {
     razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
 
     var options = {
-      'key': 'rzp_test_S2mfF9oI5zrbuE',
+      'callback_url': 'https://your-server/callback_url',
+      'key': 'rzp_test_9dJfdyO6y3qdov',
       'amount': '$total',
     };
 
